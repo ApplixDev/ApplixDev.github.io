@@ -1,0 +1,26 @@
+{
+  "name": "applixdev-github-io",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "materialize": "^0.100.1",
+    "material-icons": "^0.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  },
+  "homepage": "https://ApplixDev.github.io",
+  "authors": [
+    "'lyamalou' <'applix.dev@gmail.com'>"
+  ],
+  "description": "portfolio",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
