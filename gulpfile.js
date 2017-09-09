@@ -5,6 +5,8 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
+const ghPages = require('gulp-gh-pages');
+const moment = require('moment');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -154,6 +156,32 @@ gulp.task('wiredep', () => {
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+});
+
+// gulp.task('nojekyll', 'Add .nojekyll file to dist directory', function(done) {
+//   fs.writeFile('./dist/.nojekyll', '', function(error) {
+//     if (error) {
+//       throw error;
+//     }
+    
+//     done();
+//   });
+// });
+
+// Deploy website to gh-pages
+gulp.task('deploy', function() {
+
+  // First remove .publish folder created by gulp-gh-pages
+  // console.log('Delete .publish folder');
+  // del.sync('.publish', {force: true});
+
+  return gulp.src('dist/**/*', {
+      dot: true // to include .nojekyll file
+    })
+    .pipe(ghPages({
+       branch: 'master',
+       message: 'Update ' + moment().format('LLL')
+    }));
 });
 
 gulp.task('default', () => {
