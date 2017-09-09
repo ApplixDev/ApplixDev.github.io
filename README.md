@@ -6,8 +6,6 @@ The build website is served from the [master](https://github.com/ApplixDev/Appli
 
 You can viste the website at https://applixdev.github.io
 
----
-
 ## Getting Started
 
 The project was generated whit [yeoman](https://github.com/yeoman/yeoman.github.io) and uses gulp as a task manager.
@@ -41,7 +39,6 @@ $ gulp
 
 This simple command will run the default task in the [gulpfile.js](https://github.com/ApplixDev/ApplixDev.github.io/blob/sources/gulpfile.js)
 
----
 
 ## How to deploy to gh-pages [(see original post)](https://stackoverflow.com/questions/27664282/github-pages-for-personal-site-how-to-deploy-a-folder)
 
