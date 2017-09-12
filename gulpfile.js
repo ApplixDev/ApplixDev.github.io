@@ -6,6 +6,7 @@ const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
 const ghPages = require('gulp-gh-pages');
+const subtree = require('gulp-subtree');
 const moment = require('moment');
 
 const $ = gulpLoadPlugins();
@@ -80,12 +81,8 @@ gulp.task('fonts', () => {
 });
 
 gulp.task('extras', () => {
-  return gulp.src([
-    'app/*',
-    '!app/*.html'
-  ], {
-    dot: true
-  }).pipe(gulp.dest('dist'));
+  return gulp.src(['app/*', '!app/*.html'], { dot: true })
+  .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/**/*' ,'!dist/.git']));
@@ -158,31 +155,28 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-// gulp.task('nojekyll', 'Add .nojekyll file to dist directory', function(done) {
-//   fs.writeFile('./dist/.nojekyll', '', function(error) {
-//     if (error) {
-//       throw error;
-//     }
-    
-//     done();
-//   });
-// });
-
 // Deploy website to gh-pages
 gulp.task('deploy', function() {
 
   // First remove .publish folder created by gulp-gh-pages
-  // console.log('Delete .publish folder');
-  // del.sync('.publish', {force: true});
+  del.sync('.publish', {force: true});
 
-  return gulp.src('dist/**/*', {
-      dot: true // to include .nojekyll file
-    })
-    .pipe(ghPages({
+  return gulp.src(['dist/**/*', '!dist/git/**'], { dot: true })
+    .pipe($.ghPages({
        branch: 'master',
        message: 'Update ' + moment().format('LLL')
     }));
 });
+
+// deploy using subtree: https://gist.github.com/webcaetano/37c9fd256852282df46f
+// gulp.task('subtree', function() {
+//   return gulp.src('dist')
+//   .pipe($.subtree({
+//     branch: 'master',
+//     message: 'Update ' + moment().format('LLL')
+//   }))
+//   .pipe(del('dist'));
+// });
 
 gulp.task('default', () => {
   return new Promise(resolve => {
