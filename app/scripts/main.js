@@ -1,8 +1,13 @@
 $(document).ready(function () {
 
+    // Plugins Initialization
     $('.pushpin-nav').pushpin({
         top: 58,
         bottom: 0
+    });
+
+    $('.scrollspy').scrollSpy({
+        scrollOffset: 0
     });
 
     // Make announcement animate down and display none
@@ -16,7 +21,7 @@ $(document).ready(function () {
 
     // Go to top
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
+        if ($(this).scrollTop() > 250) {
             $('#scrollup').fadeIn(100);
         } else {
             $('#scrollup').fadeOut(300);

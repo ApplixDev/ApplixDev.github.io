@@ -1,66 +1,44 @@
 body,html {
   font-family: 'Abel', sans-serif;
-  color:#846C63;
-}
-
-body {
-  background-color: #F6F4F1!important;
+  color:#212121; /*grey darken-4*/
 }
 
 p {
   line-height: 1.5rem;
 }
 
-/* a {
-  color:#88AAA9!important;
-}  */
+/* announcement */
 
-/*a:hover {
-  color:#88AAA9!important;
-}*/
-
-#announcement{
+#announcement {
   margin: 0;
   padding: 18px;
 }
 
-#announcement i{
+#announcement i {
   cursor: pointer;
-}
-
-/* btn */
-/* .btn {
-  margin:2px;
-} */
-
-.btn, .btn-large {
-  background-color:#86A8A8!important;
-  color:white !important;
-}
-
-.btn:hover, .btn-large:hover {
-  background-color: #E0BB8E!important;
 }
 
 /* HEADER */
 
+.transparent-blue {
+  background-color: rgba(0, 50, 100, 0.82) !important;
+}
+
 nav a, nav ul a {
-  color: #88AAA9;
   font-size: 1.3rem;
 }
 
-/* nav ul a:hover {
-  background-color: #BDB1AD;
-  color:white!important;
-} */
-
-nav ul a.active {
-  font-weight: bold;
-  border-top: 2px solid #ee6e73;
+nav .brand-logo {
+  letter-spacing: .3px;
+  line-height: 32px;
+  padding: 10px 48px 10px 0;
 }
 
-nav .brand-logo{
-  color: #88AAA9;
+nav ul a.active {
+  border-bottom: 4px solid #fff;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  height: 100%;
+  line-height: 55px;
 }
 
 #banner {
@@ -70,16 +48,34 @@ nav .brand-logo{
   background-image: url(../images/banners/main.jpg);
 }
 
-#banner .h4 {
-  font-weight: bold;
-}
-
-/* Back to top */
+/* Back to top button */
 #scrollup {
   display: none;
 }
 
-.section{
+/* Buttons */
+
+.btn, .btn-large {
+  background-color: #1976d2 !important; /* blue darken-2 */
+}
+
+/* Typography */
+.section-title, .section-subtitle {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.section-subtitle {
+  margin-top: -24px;
+}
+
+/* Cards */
+.area {
+  line-height: 0.75rem;
+  padding-bottom: 10px;
+}
+
+.section {
   padding: 5em 0;
 }
 
@@ -106,39 +102,13 @@ footer.page-footer {
   padding-top: 10px;
 }
 
-/* Cards */
-.area {
-  line-height: 0.75rem;
-  padding-bottom: 10px;
-}
-
-/* 
-.card .card-title {
-  text-transform: uppercase;
-}
-
-.card .card-title.activator {
-  color: #8d6e63 !important;
-}
-
-.card .card-content .card-title {
-  font-size: 18px;
-  line-height: 22px;
-}
-
-
-.card .card-image .card-title {
-  padding: 20px 0 10px 20px;
-  font-size: 2.5rem;
-  line-height: 3rem;
-} */
-
 /* MOBILE */
 @media only screen and (min-width: 993px) {
   .container {
     width: 85%;
   }
 }
+
 
 @media only screen and (max-width : 600px) {
   ul.side-nav a {
