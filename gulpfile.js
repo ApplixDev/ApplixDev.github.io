@@ -6,7 +6,6 @@ const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
 const ghPages = require('gulp-gh-pages');
-const subtree = require('gulp-subtree');
 const moment = require('moment');
 
 const $ = gulpLoadPlugins();
@@ -85,7 +84,7 @@ gulp.task('extras', () => {
   .pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist/**/*' ,'!dist/.git']));
+gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
   runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'fonts'], () => {
@@ -159,24 +158,15 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
 gulp.task('deploy', function() {
 
   // First remove .publish folder created by gulp-gh-pages
+  console.log('deleting .publish folder');
   del.sync('.publish', {force: true});
 
-  return gulp.src(['dist/**/*', '!dist/git/**'], { dot: true })
+  return gulp.src('dist/**/*', { dot: true })
     .pipe($.ghPages({
        branch: 'master',
        message: 'Update ' + moment().format('LLL')
     }));
 });
-
-// deploy using subtree: https://gist.github.com/webcaetano/37c9fd256852282df46f
-// gulp.task('subtree', function() {
-//   return gulp.src('dist')
-//   .pipe($.subtree({
-//     branch: 'master',
-//     message: 'Update ' + moment().format('LLL')
-//   }))
-//   .pipe(del('dist'));
-// });
 
 gulp.task('default', () => {
   return new Promise(resolve => {
