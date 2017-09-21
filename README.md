@@ -186,11 +186,11 @@ or
 $ git push origin gh-pages (P)
 ```
 
-#### 2. Automaticly push pages using gulp-gh-pages
-Simplly run the next command
+#### 2. Automaticly push pages using [gulp-gh-pages](https://github.com/shinnn/gulp-gh-pages)
+Simply run the gulp deploy task in your command line
 
 ```bash
 gulp deploy
 ```
 
-**Note:** You can change branch where you wish to deploy your website in the options of the gulp *deploy* task defined in the [gulpfile.js](https://github.com/ApplixDev/ApplixDev.github.io/blob/sources/gulpfile.js)
+**Note:** You can change the branch name where you wish to deploy your website in the options of the gulp *deploy* task defined in the [gulpfile.js](https://github.com/ApplixDev/ApplixDev.github.io/blob/sources/gulpfile.js)
